@@ -10,7 +10,9 @@
 #include <string>
 #include <thread>
 #include <vector>
-#include "gopiper.h"
+#ifdef __cplusplus
+#include <gopiper.h>
+#endif
 #include <spdlog/spdlog.h>
 #ifdef _MSC_VER
 #define WIN32_LEAN_AND_MEAN
