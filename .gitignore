@@ -1,0 +1,5 @@
+*.o
+*.a
+*.onnx
+*.json
+*.tar.gz
