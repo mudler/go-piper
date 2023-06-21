@@ -29,7 +29,7 @@ libpiper_binding.a: piper.o gopiper.o
 	ar src libpiper_binding.a piper.o gopiper.o
 
 example/main: libpiper_binding.a
-	C_INCLUDE_PATH=${INCLUDE_PATH} LIBRARY_PATH=${LIBRARY_PATH} go build -buildvcs=false -x -o example/main ./example
+	LIBRARY_PATH=${LIBRARY_PATH} go build -buildvcs=false -x -o example/main ./example
 
 clean:
 	rm -rf *.o
