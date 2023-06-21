@@ -26,7 +26,7 @@ gopiper.o:
 	$(CXX) $(CXXFLAGS) gopiper.cpp -o gopiper.o -c $(LDFLAGS)
 
 libpiper_binding.a: piper.o gopiper.o
-	ar src libpiper_binding.a piper.o gopiper.o
+	ar src libpiper_binding.a piper.o
 
 example/main: libpiper_binding.a
 	LIBRARY_PATH=${LIBRARY_PATH} go build -buildvcs=false -x -o example/main ./example
