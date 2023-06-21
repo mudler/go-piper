@@ -22,7 +22,7 @@
 #include <mach-o/dyld.h>
 #endif
 
-#include "piper/src/cpp/piper.hpp"
+#include "piper.hpp"
 
 using namespace std;
 

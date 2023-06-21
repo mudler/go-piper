@@ -4,8 +4,8 @@ LIBRARY_PATH := $(abspath ./)
 
 BUILD_TYPE?=
 # keep standard at C11 and C++11
-CFLAGS   = -I./ -O3 -DNDEBUG -std=c11 -fPIC
-CXXFLAGS = -I./ -O3 -DNDEBUG -std=c++17 -fPIC
+CFLAGS   = -I./piper/src/cpp/ -O3 -DNDEBUG -std=c11 -fPIC
+CXXFLAGS = -I./piper/src/cpp/ -O3 -DNDEBUG -std=c++17 -fPIC
 LDFLAGS  = -lspdlog
 
 # warnings
@@ -29,7 +29,7 @@ libpiper_binding.a: piper.o gopiper.o
 	ar src libpiper_binding.a piper.o gopiper.o
 
 example/main: libpiper_binding.a
-	CGO_LDFLAGS="-lonnxruntime" C_INCLUDE_PATH=${INCLUDE_PATH} LIBRARY_PATH=${LIBRARY_PATH} go build -buildvcs=false -x -o example/main ./example
+	C_INCLUDE_PATH=${INCLUDE_PATH} LIBRARY_PATH=${LIBRARY_PATH} go build -buildvcs=false -x -o example/main ./example
 
 clean:
 	rm -rf *.o
