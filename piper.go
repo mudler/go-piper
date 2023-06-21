@@ -3,7 +3,7 @@ package piper
 // #cgo CXXFLAGS: -I${SRCDIR}/piper/src/cpp/ -std=c++17
 // #cgo LDFLAGS: -lpiper_binding -lspdlog -lonnxruntime -lespeak-ng -lpiper_phonemize
 // #include <stdlib.h>
-// #include "gopiper.h"
+// int piper_tts(char *text, char *model, char *espeakData, char *tashkeelPath, char *dst);
 import "C"
 import (
 	"fmt"
