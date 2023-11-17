@@ -26,10 +26,9 @@
 
 using namespace std;
 
-int piper_tts(char *text, char *model, char *espeakData, char *tashkeelPath, char *dst) {
+int _piper_tts(char *text, char *model, char *espeakData, char *tashkeelPath, char *dst, optional<piper::SpeakerId> speakerId) {
   filesystem::path model_path;
   filesystem::path config_path;
-  optional<piper::SpeakerId> speakerId;
   model_path = filesystem::path(std::string(model));
   config_path = filesystem::path(std::string(model) + ".json");
 
@@ -82,3 +81,11 @@ int piper_tts(char *text, char *model, char *espeakData, char *tashkeelPath, cha
   return EXIT_SUCCESS;
 }
 
+int piper_tts(char *text, char *model, char *espeakData, char *tashkeelPath, char *dst) {
+  optional<piper::SpeakerId> speakerId;
+  return _piper_tts(text, model, espeakData, tashkeelPath, dst, speakerId);
+}
+
+int piper_tts_speaker(char *text, char *model, char *espeakData, char *tashkeelPath, char *dst, int64_t speakerId) {
+  return _piper_tts(text, model, espeakData, tashkeelPath, dst, speakerId);
+}

@@ -22,3 +22,18 @@ func TextToWav(text, model, espeek, tas, dst string) error {
 	}
 	return nil
 }
+
+func TextToWavSpeaker(text, model, espeek, tas, dst string, speakerId int64) error {
+	t := C.CString(text)
+	m := C.CString(model)
+	ee := C.CString(espeek)
+	tt := C.CString(tas)
+	d := C.CString(dst)
+	sid := C.int64_t(speakerId)
+
+	ret := C.piper_tts_speaker(t, m, ee, tt, d, sid)
+	if ret != 0 {
+		return fmt.Errorf("failed")
+	}
+	return nil
+}
