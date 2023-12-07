@@ -1,7 +1,7 @@
 package piper
 
-// #cgo CXXFLAGS: -I${SRCDIR}/piper/src/cpp/ -std=c++17
-// #cgo LDFLAGS: -lpiper_binding -lspdlog -lonnxruntime -lespeak-ng -lpiper_phonemize -lucd
+// #cgo CXXFLAGS: -I${SRCDIR}/piper/src/cpp/ -I${SRCDIR}/piper-phonemize/pi/include -std=c++17
+// #cgo LDFLAGS: -L${SRCDIR}/espeak/ei/lib/ -L${SRCDIR}/piper-phonemize/pi/lib/ -lpiper_binding -lspdlog -lonnxruntime -lespeak-ng -lpiper_phonemize -lucd
 // #include <stdlib.h>
 // #include <gopiper.h>
 import "C"

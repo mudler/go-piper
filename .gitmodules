@@ -1,3 +1,9 @@
 [submodule "piper"]
 	path = piper
 	url = https://github.com/rhasspy/piper
+[submodule "piper-phonemize"]
+	path = piper-phonemize
+	url = https://github.com/rhasspy/piper-phonemize
+[submodule "espeak"]
+	path = espeak
+	url = https://github.com/rhasspy/espeak-ng
