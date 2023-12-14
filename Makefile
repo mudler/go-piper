@@ -20,7 +20,7 @@ piper.o:
 	mkdir -p piper/build
 	mkdir -p piper-phonemize/pi
 	mkdir -p espeak/ei
-	cd espeak/ei && cmake .. -DUSE_ASYNC:BOOL=OFF -DBUILD_SHARED_LIBS:BOOL=ON -DUSE_MBROLA:BOOL=OFF -DUSE_LIBPCAUDIO:BOOL=OFF -DUSE_KLATT:BOOL=OFF -DUSE_SPEECHPLAYER:BOOL=OFF -DEXTRA_cmn:BOOL=ON -DEXTRA_ru:BOOL=ON -DCMAKE_C_FLAGS="-D_FILE_OFFSET_BITS=64" -DUSE_LIBSONIC:BOOL=OFF -DBUILD_SHARED_LIBS:BOOL=ON -DCMAKE_INSTALL_PREFIX:PATH=$(abspath ./)/espeak/ei -DCMAKE_BUILD_TYPE=Release && make install
+	cd espeak/ei && cmake .. -DUSE_ASYNC:BOOL=OFF -DBUILD_SHARED_LIBS:BOOL=ON -DUSE_MBROLA:BOOL=OFF -DUSE_LIBPCAUDIO:BOOL=OFF -DUSE_KLATT:BOOL=OFF -DUSE_SPEECHPLAYER:BOOL=OFF -DBUILD_ESPEAK_NG_TESTS:BOOL=OFF -DCMAKE_POSITION_INDEPENDENT_CODE:BOOL=ON -DEXTRA_cmn:BOOL=ON -DEXTRA_ru:BOOL=ON -DCMAKE_C_FLAGS="-D_FILE_OFFSET_BITS=64" -DUSE_LIBSONIC:BOOL=OFF -DBUILD_SHARED_LIBS:BOOL=ON -DCMAKE_INSTALL_PREFIX:PATH=$(abspath ./)/espeak/ei -DCMAKE_BUILD_TYPE=Release && make install
 	cd piper-phonemize/pi && cmake .. --debug-output -DCMAKE_INSTALL_PREFIX:PATH=$(abspath ./)/piper-phonemize/pi -DESPEAK_NG_DIR=$(abspath ./)/espeak/ei/ -DCMAKE_BUILD_TYPE=Release && make install
 	if [ -d "$(abspath ./)/piper-phonemize/pi/lib64" ]; then cp -rfv piper-phonemize/pi/lib64/* piper-phonemize/pi/lib; fi
 	cd piper/build && cmake .. -DPIPER_PHONEMIZE_DIR=$(abspath ./)/piper-phonemize/pi -DCMAKE_BUILD_TYPE=Release $(CMAKE_ARGS) && make
