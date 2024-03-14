@@ -26,7 +26,7 @@ piper.o:
 	cd piper/build && cmake .. -DPIPER_PHONEMIZE_DIR=$(abspath ./)/piper-phonemize/pi -DCMAKE_BUILD_TYPE=Release $(CMAKE_ARGS) && make
 	cp piper/build/CMakeFiles/piper.dir/src/cpp/piper.cpp.o piper.o
 
-gopiper.o:
+gopiper.o: piper.o
 	$(CXX) $(CXXFLAGS) gopiper.cpp -o gopiper.o -c $(LDFLAGS)
 
 libpiper_binding.a: piper.o gopiper.o
