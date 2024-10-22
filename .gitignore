@@ -3,3 +3,4 @@
 *.onnx
 *.json
 *.tar.gz
+example/main
