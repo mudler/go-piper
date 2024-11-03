@@ -32,16 +32,6 @@ int _piper_tts(char *text, char *model, char *espeakData, char *tashkeelPath, ch
   model_path = filesystem::path(std::string(model));
   config_path = filesystem::path(std::string(model) + ".json");
 
-  if (!filesystem::exists(model_path)) {
-    spdlog::debug("Error: Model path does not exist: ({})", model_path.c_str());
-    return EXIT_FAILURE;
-  }
-
-  if (!filesystem::exists(config_path)) {
-    spdlog::debug("Error: Config path does not exist: ({})", config_path.c_str());
-    return EXIT_FAILURE;
-  }
-
   piper::PiperConfig piperConfig;
   piper::Voice voice;
 
