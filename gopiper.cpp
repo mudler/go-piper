@@ -29,27 +29,16 @@ using namespace std;
 int _piper_tts(char *text, char *model, char *espeakData, char *tashkeelPath, char *dst, optional<piper::SpeakerId> speakerId) {
   filesystem::path model_path;
   filesystem::path config_path;
-  error_code ec;
-  uintmax_t fsize;
-
   model_path = filesystem::path(std::string(model));
   config_path = filesystem::path(std::string(model) + ".json");
 
-  fsize = filesystem::file_size(model_path, &ec);
-  if (ec) {
-    spdlog::debug("Error while checking Model Path ({}) :: ({})", model_path.c_str(), ec.message());
-    return EXIT_FAILURE;
-  } else if (fsize == 0) {
-    spdlog::debug("Error while checking Model Path ({}) :: zero size", model_path.c_str());
+  if (!filesystem::exists(model_path)) {
+    spdlog::debug("Error: Model path does not exist: ({})", model_path.c_str());
     return EXIT_FAILURE;
   }
 
-  fsize = filesystem::file_size(config_path, &ec);
-  if (ec) {
-    spdlog::debug("Error while checking Model Path ({}) :: ({})", config_path.c_str(), ec.message());
-    return EXIT_FAILURE;
-  } else if (fsize == 0) {
-    spdlog::debug("Error while checking Model Path ({}) :: zero size", config_path.c_str());
+  if (!filesystem::exists(config_path)) {
+    spdlog::debug("Error: Config path does not exist: ({})", config_path.c_str());
     return EXIT_FAILURE;
   }
 
