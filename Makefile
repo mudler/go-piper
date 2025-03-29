@@ -6,7 +6,7 @@ BUILD_TYPE?=
 # keep standard at C11 and C++11
 CFLAGS   = -I. -I./piper/src/cpp -I./piper/build/fi/include -I./piper/build/pi/include -I./piper/build/si/include -O3 -DNDEBUG -std=c11 -fPIC -I./piper-phonemize/pi/include
 CXXFLAGS = -I. -I./piper/src/cpp -I./piper/build/fi/include -I./piper/build/pi/include -I./piper/build/si/include -O3 -DNDEBUG -std=c++17 -fPIC -I./piper-phonemize/pi/include
-LDFLAGS  = -L./piper-phonemize/pi/lib -L./espeak/ei/lib/ -L./piper/build/fi/lib -L./piper/build/pi/lib -L./piper/build/si/lib -lfmt -lspdlog -lucd
+LDFLAGS  = -L./piper-phonemize/pi/lib -L./espeak/ei/lib/ -L./piper/build/fi/lib -L./piper/build/pi/lib -L./piper/build/si/lib
 
 # warnings
 CFLAGS   += -Wall -Wextra -Wpedantic -Wcast-qual -Wdouble-promotion -Wshadow -Wstrict-prototypes -Wpointer-arith -Wno-unused-function
